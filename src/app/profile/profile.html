@@ -66,6 +66,7 @@
   <div class="shadow-sm p-4 rounded bg-light mb-4">
     <h4 class="d-flex justify-content-between align-items-center">
       <span>Addresses</span>
+      @if(this.addresses.length <5){
       <button
         class="btn btn-outline-primary"
         (click)="showAddAddress = !showAddAddress"
@@ -75,6 +76,7 @@
           class="fa-lg"
         ></fa-icon>
       </button>
+      }
     </h4>
 
     <ng-container *ngIf="addresses && addresses.length > 0; else noAddresses">
@@ -200,6 +202,7 @@
   <div class="shadow-sm p-4 rounded bg-light mb-4">
     <h4 class="d-flex justify-content-between align-items-center">
       <span>Phones</span>
+      @if(this.phones.length <5){
       <button
         class="btn btn-outline-primary"
         (click)="showAddPhone = !showAddPhone"
@@ -209,6 +212,7 @@
           class="fa-lg"
         ></fa-icon>
       </button>
+      }
     </h4>
 
     <ng-container *ngIf="phones && phones.length > 0; else noPhones">
