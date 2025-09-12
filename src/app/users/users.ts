@@ -4,6 +4,7 @@ import { AdminService } from '../Services/admin.js';
 import { CommonModule } from '@angular/common';
 import { RoleDTO } from '../Models/role.js';
 import { FormsModule, NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -18,7 +19,7 @@ export class Users implements OnInit {
   isLoading = false;
   errorMessage = '';
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -88,6 +89,21 @@ export class Users implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+  viewAllActivities() {
+    this.router.navigate([`/admin/logs/user-activities`]);
+  }
+
+  viewActivities(userId: string) {
+    this.router.navigate([`/admin/logs/user-activities`, userId]);
+  }
+
+  viewAllLogins() {
+    this.router.navigate([`/admin/logs/user-logins`]);
+  }
+
+  viewLogins(userId: string) {
+    this.router.navigate([`/admin/logs/user-logins`, userId]);
   }
 
   // For flag styling

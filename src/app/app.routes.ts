@@ -13,6 +13,10 @@ import { Users } from './users/users.js';
 import { AdminGuard } from './guards/admin-guard.js';
 import { Roles } from './roles/roles.js';
 import { Permissions } from './permissions/permissions.js';
+import { UserActivities } from './logs/user-activities/user-activities.js';
+import { UserLogins } from './logs/user-logins/user-logins.js';
+import { UsersActivities } from './logs/users-activities/users-activities.js';
+import { UsersLogins } from './logs/users-logins/users-logins.js';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'account/login', pathMatch: 'full' },
@@ -36,6 +40,26 @@ export const routes: Routes = [
   {
     path: 'admin/roles',
     component: Roles,
+    canActivate: [authGuard, AdminGuard],
+  },
+  {
+    path: 'admin/logs/user-activities',
+    component: UsersActivities,
+    canActivate: [authGuard, AdminGuard],
+  },
+  {
+    path: 'admin/logs/user-activities/:userId',
+    component: UserActivities,
+    canActivate: [authGuard, AdminGuard],
+  },
+  {
+    path: 'admin/logs/user-logins',
+    component: UsersLogins,
+    canActivate: [authGuard, AdminGuard],
+  },
+  {
+    path: 'admin/logs/user-logins/:userId',
+    component: UserLogins,
     canActivate: [authGuard, AdminGuard],
   },
   {
