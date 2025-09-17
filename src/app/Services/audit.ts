@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { LoginActivityDTO } from '../Models/LoginActivityDTO.js';
 import { UserActivityDTO } from '../Models/UserActivityDTO.js';
 import { HttpClient } from '@angular/common/http';
+import { RoleActivityDTO } from '../Models/RoleActivityDTO.js';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +34,11 @@ export class AuditService {
     return this.http.get<LoginActivityDTO[]>(
       `${this.baseUrl}/login-activities/${userId}`
     );
+  }
+
+  // === Roles Activities ===
+
+  getAllRolesActivities(): Observable<RoleActivityDTO[]> {
+    return this.http.get<RoleActivityDTO[]>(`${this.baseUrl}/roles-activities`);
   }
 }

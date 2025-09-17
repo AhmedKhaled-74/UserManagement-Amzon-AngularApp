@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AdminService } from '../Services/admin.js';
 import { RoleDTO, RoleAddDTO } from '../Models/role.js';
 import { PermissionDTO } from '../Models/PermissionDTO.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roles',
@@ -24,7 +25,7 @@ export class Roles implements OnInit {
   editingRoleId: string | null = null;
   editingRoleName = '';
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService ,private router:Router) {}
 
   ngOnInit(): void {
     this.loadRoles();
@@ -45,6 +46,10 @@ export class Roles implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  viewAllActivities() {
+    this.router.navigate([`/admin/logs/roles-activities`]);
   }
   loadPermissions() {
     this.adminService.getAllPermissions().subscribe({

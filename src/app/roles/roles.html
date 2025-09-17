@@ -1,5 +1,18 @@
 <div class="container mt-4">
-  <h2 class="mb-3">Roles Management</h2>
+  <div
+    class="d-flex flex-column flex-lg-row justify-content-between mb-lg-2 mb-4"
+  >
+    <h2 class="mb-3">Roles Management</h2>
+    <div>
+      <button
+        class="btn btn-sm btn-info me-2"
+        (click)="viewAllActivities()"
+        [disabled]="isLoading"
+      >
+        <i class="fa-solid fa-list"></i> View All Activities
+      </button>
+    </div>
+  </div>
 
   <!-- Add Role -->
   <div class="input-group mb-3">
